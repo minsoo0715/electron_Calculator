@@ -1,0 +1,23 @@
+#Button{
+    height:100px;
+    width:100px;
+    font-size:50px;
+    border:1px solid black;
+    text-align:center;
+}
+
+
+
+#line{
+    display:flex;
+     align-items: left;
+}
+
+#indicator{
+    border:1px solid black;
+    text-align:center;
+    display:flex;
+    align-items: left;
+    height:100px;
+    width:405px;
+}
