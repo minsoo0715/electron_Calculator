@@ -4,6 +4,16 @@
     font-size:50px;
     border:1px solid black;
     text-align:center;
+    cursor: pointer;
+
+    -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+   user-select: none;
+}
+#Button:hover{
+    background-color:gainsboro;
 }
 
 
@@ -14,10 +24,16 @@
 }
 
 #indicator{
+    
+    -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+   user-select: none;
     border:1px solid black;
     text-align:center;
+    font-size:50px;
     display:flex;
-    align-items: left;
     height:100px;
     width:405px;
 }

@@ -12,7 +12,7 @@ const {app, BrowserWindow} = require('electron')
   
   function createWindow () {
     // browser window를 만듦
-    win = new BrowserWindow({width: 400, height: 500})
+    win = new BrowserWindow({width: 400, height: 600})
   
     // and load the index.html of the app.
     //그리고 index.html을 불러온다.
@@ -21,10 +21,9 @@ const {app, BrowserWindow} = require('electron')
       protocol: 'file:',
       slashes: true
     }))
+
+    
   
-    // Open the DevTools.
-    //개발자 도구 열기
-    win.webContents.openDevTools()
   
     // Emitted when the window is closed.
     //창이 닫히면 실행됨

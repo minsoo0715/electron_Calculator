@@ -3,7 +3,7 @@
     <head>
       <link rel="stylesheet" type="text/css" href="style.css">
       <meta charset="UTF-8">
-      <title>Electro 계산기</title>
+      <title>Calculator</title>
     </head>
     <body style="align-content: center;">
 
@@ -15,31 +15,29 @@
             <div id="Button" onclick="number(1)">1</div>
             <div id="Button" onclick="number(2)">2</div>
             <div id="Button" onclick="number(3)">3</div>
-            <div id="Button">+</div>
-
+            <div id="Button" onclick="number('+')">+</div>
         </div>
 
         <div id="line">
             <div id="Button" onclick="number(4)">4</div>
             <div id="Button" onclick="number(5)">5</div>
             <div id="Button" onclick="number(6)">6</div>
-            <div id="Button">-</div>
-
+            <div id="Button" onclick="number('-')">-</div>
         </div>
         
         <div id="line">
-            <div id="Button">7</div>
-            <div id="Button">8</div>
-            <div id="Button">9</div>
-            <div id="Button">*</div>
+            <div id="Button" onclick="number(7);">7</div>
+            <div id="Button" onclick="number(8);">8</div>
+            <div id="Button" onclick="number(9);">9</div>
+            <div id="Button" onclick="number('*')">*</div>
 
         </div>
         
         <div id="line">
             <div id="Button" onclick="erase();"> << </div>
-            <div id="Button">0</div>
-            <div id="Button">#</div>
-            <div id="Button">3</div>
+            <div id="Button" onclick="number(0)">0</div>
+            <div id="Button" onclick="deleteAll()">C</div>
+            <div id="Button" onclick="cal()">=</div>
 
         </div>
         
@@ -47,19 +45,80 @@
     
     var indi_ = document.getElementById("indicator");
     
+    var operator = ["+", "-", "*", "/"];
 
-
-
-
-    console.log(body_children)
+    function deleteAll() {
+        indi_.innerText = "";
+    }
 
 
     function number(num) {
+      
         indi_.innerHTML += num;
-        }
+  
+         
 
+        }
+    
     function erase() {
         indi_.innerHTML = indi_.innerHTML.substr(0,indi_.innerHTML.length-1);
+    }
+
+    function parser(str) {
+        
+
+
+        let Reg = new RegExp(`^[0-9]+[\\+\\-\\*\\/]{1}[0-9]+$`)
+        
+       if(!Reg.test(str)) throw new Error("Invalid String");
+
+        let n1 = str.replace(/[\+\-\*\/]/gi, " ").split(" ")[0];
+        let n2 = str.replace(/[\+\-\*\/]/gi, " ").split(" ")[1]
+        let o = str.replace(/[0-9]/gi, "");
+
+       return {
+           n1:n1,
+           n2:n2,
+           o:o
+       }
+
+
+
+    }
+
+    function cal() {
+
+       
+
+
+        try{
+
+        let parser_data = parser(indi_.innerText);
+
+
+        var o = parser_data.o;
+        var a = parser_data.n1;
+        var b = parser_data.n2;
+
+        
+        switch(o) {
+            case '+':
+                indi_.innerHTML = `${Number(a) + Number(b)}`;
+                break;
+            case '-':
+                indi_.innerHTML = `${Number(a) - Number(b)}`;
+                break;
+            case '*':
+                indi_.innerHTML = `${Number(a) * Number(b)}`;
+                break;
+            case '/':
+                indi_.innerHTML = `${Number(a) / Number(b)}`;
+                break;
+        }
+
+        }catch (e) {
+            alert(e);
+        }
     }
 
     

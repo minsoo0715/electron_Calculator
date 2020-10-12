@@ -4,14 +4,39 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "electron": "^10.1.3",
     "node": "^14.13.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.3",
+    "electron-builder": "^22.8.1"
+  },
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "electron-builder --windows nsis:ia32"
   },
-  "author": "",
+  "build": {
+    "productName": "Calculator",
+    "appId": "com.electron.Calculator",
+    "asar": true,
+    "protocols": {
+      "name": "Calculator",
+      "schemes": [
+        "Calculator"
+      ]
+    }
+  },
+  "win": {
+    "target": [
+      "zip",
+      "nsis"
+    ],
+    "icon": "./resources/installer/Icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  },
+  "author": "WhiteB",
   "license": "ISC"
 }
