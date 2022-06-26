@@ -13,7 +13,8 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "electron-builder --windows nsis:ia32"
+    "deploy": "electron-builder --windows nsis:ia32",
+    "deploy:mac": "electron-builder --mac"
   },
   "build": {
     "productName": "Calculator",
